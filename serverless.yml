@@ -1,0 +1,54 @@
+frameworkVersion: '3.38.0'
+service: storit
+
+params: ${file(./environment/params.yml)}
+provider: ${file(./environment/provider.yml)}
+
+plugins:
+    - serverless-plugin-typescript
+    - serverless-offline
+
+custom:
+    serverless-offline:
+        host: 0.0.0.0
+        httpPort: 3008
+        noPrependStageInUrl: true
+        prefix: storit
+        noTimeout: true
+    cors: ${file(./environment/cors.yml)}
+
+package:
+    individually: true
+    exclude:
+        - '.*/**'
+        - 'node_modules'
+
+functions:
+    storit-get:
+        description: Get a data object
+        handler: src/handler/storit/get.handler
+        events:
+            - http:
+                  method: get
+                  path: /{id}
+                  cors: true
+
+    storit-create:
+        description: Create a data object
+        handler: src/handler/storit/store.handler
+        events:
+            - http:
+                  method: post
+                  path: /
+                  cors: true
+
+    
+    storit-update:
+        description: Update a data object
+        handler: src/handler/storit/get.handler
+        events:
+            - http:
+                  method: patch
+                  path: /{id}
+                  cors: true
+                  # private: true
