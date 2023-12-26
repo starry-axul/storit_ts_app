@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx serverless offline",
-    "build": "npx tsc"
+    "build": "npx tsc --build",
+    "prepare": "husky install",
+    "migrate": "npx prisma migrate deploy",
+    "migrate-dev": "npx prisma migrate dev"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +30,7 @@
     "axios": "^1.6.2",
     "dotenv": "^16.3.1",
     "serverless-http": "^3.2.0",
-    "tsimportlib": "^0.0.5"
+    "tsimportlib": "^0.0.5",
+    "uuid": "^9.0.1"
   }
 }

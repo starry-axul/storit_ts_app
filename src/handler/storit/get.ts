@@ -4,10 +4,13 @@ import { StoritController } from '../../domain/controller/storit';
 import { SlsErrorHandler, CommonHeader } from '../../common/response/response';
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import {SlsResponse } from '../../common/sls/responser'
+import { PrismaClient } from '@prisma/client'
 
 require('dotenv').config();
 
-const repo = new StoritRepository(null);
+const prisma = new PrismaClient()
+
+const repo = new StoritRepository(prisma);
 
 export const handler: APIGatewayProxyHandler = async (event, _context) => {
 

@@ -44,7 +44,7 @@ export class StoritController implements IStoritController {
             throw storit;
         }
 
-        return new SuccessResponse(storit);
+        return storit.data;
     };
 
 }
