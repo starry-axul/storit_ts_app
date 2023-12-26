@@ -1,9 +1,9 @@
 -- CreateTable
 CREATE TABLE `Storit` (
-    `id` VARCHAR(30) NOT NULL,
+    `id` VARCHAR(36) NOT NULL,
     `pub` BOOLEAN NOT NULL DEFAULT false,
-    `userID` VARCHAR(30) NOT NULL,
-    `data` JSON NOT NULL,
+    `userID` VARCHAR(36) NOT NULL,
+    `data` LONGTEXT NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
 

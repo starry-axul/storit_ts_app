@@ -11,10 +11,10 @@ datasource db {
 }
 
 model Storit {
-  id        String      @id  @db.VarChar(30) @unique
+  id        String   @id  @db.VarChar(36) @unique
   pub       Boolean  @default(false)
-  userID    String   @db.VarChar(30)
-  data      Json 
+  userID    String   @db.VarChar(36)
+  data      String   @db.LongText
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

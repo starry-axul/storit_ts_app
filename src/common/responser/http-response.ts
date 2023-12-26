@@ -43,7 +43,7 @@ export class SuccessResponse<T>
     extends BaseResponse<T>
     implements BaseResponseI<T>
 {
-    constructor(data: T, message?: string, meta?: MetaTypes) {
+    constructor(data: T, meta?: MetaTypes) {
         super(codes.OK, data, undefined, meta);
     }
 }

@@ -1,28 +1,31 @@
-import { Storit } from '../entity';
-
+import { PrismaClient } from '@prisma/client'
+import {v4 as uuidv4} from 'uuid';
+import {Storit} from '../entity'
 
 export interface IStoritRepository {
-    store(pub: boolean, data: string): Promise<Storit | null>;
+    store(pub: boolean, userID: string, data: string): Promise<Storit | null>;
     find(id: string): Promise<Storit | null>;
 }
 
 export class StoritRepository implements IStoritRepository {
-    private database: any;
 
-    constructor(database: any) {
+    private database: PrismaClient;
+
+    public constructor(database: PrismaClient) {
         this.database = database;
     }
 
-    public store = async (pub: boolean, data: string): Promise<Storit | null> => {
+    public store = async (pub: boolean, userID: string, data: string): Promise<Storit | null> => {
         try {
             const storit: Storit = {
-                id: "123",
-                public: pub,
+                id: uuidv4(),
+                userID,
+                pub,
                 data,
                 createdAt: new Date(),
                 updatedAt: new Date(),
             };
-
+            await this.database.storit.create({data: storit})
             return storit;
         } catch (e) {
             console.error({ e });
@@ -32,16 +35,14 @@ export class StoritRepository implements IStoritRepository {
     
     public find = async (id: string): Promise<Storit | null> => {
         try {
-            console.log(id)
-            
+            // By ID
+            const storit = await this.database.storit.findUnique({
+                where: {
+                    id,
+                },
+            })
 
-            const storit: Storit = {
-                id: id,
-                public: true,
-                data: "test{test{123}}",
-                createdAt: new Date(),
-                updatedAt: new Date(),
-            };
+            //storit.data = storit?.data as Prisma.JsonObject
 
             return storit;
         } catch (e) {

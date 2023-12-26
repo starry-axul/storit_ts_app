@@ -23,8 +23,7 @@ export class StoritService implements IStoritService {
     public store = async (data: object, pub?: boolean): Promise<Storit | BaseError> => {
         console.log('[Storit Get Service] Fetching data.');
 
-        let storit = await this.repository.store(!!pub, JSON.stringify(data));
-        
+        let storit = await this.repository.store(!!pub, "123123", JSON.stringify(data));
 
         if (!storit) {
             return new NotFoundError(
@@ -44,6 +43,8 @@ export class StoritService implements IStoritService {
                 `date not found with ${id} id`
             );
         }
+
+        storit.data = JSON.parse(storit.data)
         return storit;
     };
 
