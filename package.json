@@ -7,7 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx serverless offline",
     "build": "npx tsc --build",
-    "prepare": "husky install",
     "migrate": "npx prisma migrate deploy",
     "migrate-dev": "npx prisma migrate dev"
   },
