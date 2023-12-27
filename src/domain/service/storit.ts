@@ -30,6 +30,8 @@ export class StoritService implements IStoritService {
                 `error`
             );
         }
+
+        storit.data = JSON.parse(storit.data)
         return storit;
     };
 

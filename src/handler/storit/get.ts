@@ -4,7 +4,7 @@ import { StoritController } from '../../domain/controller/storit';
 import { SlsErrorHandler, CommonHeader } from '../../common/response/response';
 import { APIGatewayProxyHandler } from 'aws-lambda';
 import {SlsResponse } from '../../common/sls/responser'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '../../common/generated/prisma/client'
 
 require('dotenv').config();
 

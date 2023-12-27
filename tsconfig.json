@@ -22,5 +22,5 @@
     "allowJs": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "prisma", "example", "environment"] 
+  "exclude": ["node_modules", "prisma", "example", "environment", "src/common/generated"] 
 }

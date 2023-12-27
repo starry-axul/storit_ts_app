@@ -1,4 +1,5 @@
 frameworkVersion: '3.38.0'
+useDotenv: true
 service: storit
 
 params: ${file(./environment/params.yml)}
@@ -19,6 +20,13 @@ custom:
 
 package:
     individually: true
+    include:
+        - src/common/generated/prisma/**/*
+    patterns:
+        - '!node_modules/.prisma/client/libquery_engine-*'
+        - 'node_modules/.prisma/client/libquery_engine-rhel-*'
+        - '!node_modules/prisma/libquery_engine-*'
+        - '!node_modules/@prisma/engines/**'
     exclude:
         - '.*/**'
         - 'node_modules'

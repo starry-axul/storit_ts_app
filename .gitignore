@@ -18,3 +18,5 @@ ormconfig.ts
 /coverage/*
 .env
 my-dynamodb-data/
+
+src/common/generated/prisma/client

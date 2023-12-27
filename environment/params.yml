@@ -6,18 +6,17 @@ default:
     dashboard: yhn-5y7-dqa
     #aws
     aws-bucket-name: gbl-core-serverless
-    aws-bucket-kms-key: ${env:AWS_BUCKET_KMS_KEY, 'alias/aws/s3'}
-    aws-lambda-kms-key-arn: ${env:AWS_LAMBDA_KMS_KEY, 'arn:aws:kms:us-east-1:999999999999:key/dummy'}
+    aws-memory-size: 256
+    database-url: ${env:DATABASE_URL}
+    #aws-bucket-kms-key: ${env:AWS_BUCKET_KMS_KEY, 'alias/aws/s3'}
+    #aws-lambda-kms-key-arn: ${env:AWS_LAMBDA_KMS_KEY, 'arn:aws:kms:us-east-1:999999999999:key/dummy'}
     aws-api-key-name: ${param:environment}-core-storit
     aws-tracing-apigateway: false
     aws-tracing-lambda: false
     aws-version-function: false
     aws-region: us-east-1
-    aws-policy-lambda-exec: 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
-    aws-policy-lambda-decrypt: 'arn:aws:iam::${env:AWS_ACCOUNT, 99999}:policy/${param:environment}-${param:vertical}-core-lambda-decrypt'
-    #datadog
-    datadog-enabled: false
-    datadog-log-level: error
+    #aws-policy-lambda-exec: 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+    #aws-policy-lambda-decrypt: 'arn:aws:iam::${env:AWS_ACCOUNT, 99999}:policy/${param:environment}-${param:vertical}-core-lambda-decrypt'
 prod:
     environment: prod
     #aws
